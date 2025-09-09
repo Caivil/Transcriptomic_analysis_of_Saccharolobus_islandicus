@@ -8,7 +8,7 @@ The experimental design of the study focused on understanding the gene expressio
 The reads (Sequenced with Illumina NextSeq 2000) were obtaiend from the NCBI database along with a ```.fasta``` reference and ```gunzip *.fastq.gz``` was used to unzip the file. 
 ## 3.Workflow
 This workflow explains the sequence processing of subsamples
-### 3.1 mapping reads to reference 
+### 3.1 Mapping reads to reference 
 ```module load bowtie2-2.4.1, module load samtools-1.18,module load subread-2.0.8```  was ran to load the tool into the enivironmnet.
 ##### Loop through each sample
 ```samples=(2h30_13_S26_R1_001.fastq  4h_1_S31_R1_001.fastq  6h_10_S53_R1_001.fastq)
@@ -18,7 +18,7 @@ for i in "${samples[@]}"; do
     rm "${i}.sam"
 done
 ```
-### 3.2 featureCounts for quantifying reads
+### 3.2 FeatureCounts for quantifying reads
 ```
 featureCounts -a sequence.gtf -F GTF -o counts_2.txt -T 14 *.bam
 ```
