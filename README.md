@@ -1,9 +1,9 @@
 # Transcriptomic_analysis_of_Saccharolobus_islandicus
 ## 1.Data source
 The experimental design of the study focused on understanding the gene expression of Saccharolobus islandicus relative to its different cell-cycle stages.  Cultures of S. islandicus were made to begin the cell cycle at once by a 6-hour treatment with acetic acid. After the removal of the acetic acid, the cells resumed their cell cycle. Total RNA was extracted from 3 samples at three specific time points after synchronization:
-*sample 1:  2 hours and 30 minutes (in M-G1 phase)
-*sample 2: 4 hours (in S phase)
-*sample 3: 6 hours( in G2 phase)
+- sample 1:  2 hours and 30 minutes (in M-G1 phase)
+- sample 2: 4 hours (in S phase)
+- sample 3: 6 hours( in G2 phase)
 ## 2.Obtaining the data
 The long reads were obtaiend from the NCBI database and gunzip *.fastq.gz was used to unzip the file. 
 The short reads were obtained with sratoolkit: ```module load sratoolkit.3.0.7``` then ```fasterq-dump SRR30916324 --split-files```.
