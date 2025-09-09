@@ -10,21 +10,18 @@ The reads (Sequenced with Illumina NextSeq 2000) were obtaiend from the NCBI dat
 This workflow explains the sequence processing of subsamples
 ### 3.1 mapping reads to reference 
 ```module load bowtie2-2.4.1, module load samtools-1.18,module load subread-2.0.8```  was ran to load the tool into the enivironmnet.
-samples=(2h30_13_S26_R1_001.fastq  4h_1_S31_R1_001.fastq  6h_10_S53_R1_001.fastq)
-
 ##### Loop through each sample
-```
+```samples=(2h30_13_S26_R1_001.fastq  4h_1_S31_R1_001.fastq  6h_10_S53_R1_001.fastq)
 for i in "${samples[@]}"; do
     bowtie2 -x ref_index -U "${i}.fastq" -S "${i}.sam"
     samtools view -b "${i}.sam" > "${i}.bam"
     rm "${i}.sam"
 done
 ```
-### 3.3 Checking completeness of the genome
-Using  ```CheckM``` we are able to analyis the genome for Completeness, Contamination and Strain heterogeneity.```module load checkm```  was ran to load the tool into the enivironmnet.
-<pre>checkm lineage_wf -t 8 -x fasta Assembled_output/ checkm_output/</pre>
-Output is  hmmer.analyze.txt (for completeness/contamination estimation)  hmmer.tree.txt (for phylogenetic tree marker genes)
-
+### 3.2 featureCounts for quantifying reads
+```
+featureCounts -a sequence.gtf -F GTF -o counts_2.txt -T 14 *.bam
+```
 
 
 
