@@ -24,7 +24,7 @@ done
 featureCounts -a sequence.gtf -F GTF -o counts_2.txt -T 14 *.bam
 ```
 ### In R
-The ```edgeR library``` was instealed and imported
+The ```edgeR library``` was installed and imported
 ```
 Installing edgeR library
 BiocManager::install("edgeR")
@@ -77,24 +77,27 @@ results <- data.frame(
 rownames(results) <- rownames(norm_counts)
 head(results)
 ```
+The ```limma library```  was imported
 
-library(limma)
-
-# --- Define sample groups ---
-# Replace these with the actual sample labels in your counts table
+### 3.11 The sample groups were defined
+```
 group <- factor(c(rep("M_G1", 1), rep( "S", 1), rep("G2", 1)))
-
-# --- Design matrix ---
+```
+### 3.12 Design matrix
+```
 design<- model.matrix(~0 + group)
 colnames(design) <- levels(group)
-
-# --- Transform counts with voom ---
+```
+### 3.13 Transform counts with voom
+```
 v <- voom(dge, design, plot = FALSE)
-
-# --- Fit linear model ---
+```
+### 3.14 Fit linear model
+```
 fit <- lmFit(v, design)
-
-# --- Define contrasts ---
+```
+### 3.15 Define contrasts
+```
 contrasts <- makeContrasts(
   M_G1_vs_S  = M_G1 - S,
   S_vs_G2    = S - G2,
@@ -103,7 +106,9 @@ contrasts <- makeContrasts(
 )
 
 fit2 <- contrasts.fit(fit, contrasts)
-fit2 <- eBayes(fit2) # No residual degrees of freedom in linear model fits
+fit2 <- eBayes(fit2)
+```
+No residual degrees of freedom in linear model fits
 
 
 
