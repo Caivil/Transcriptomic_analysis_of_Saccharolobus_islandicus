@@ -36,18 +36,15 @@ counts = read.table("counts.txt",row.names = 1, header=T)
 counts<-counts[, -(1:5)]
 dge <- DGEList(counts = counts)
 ```
-
 ### 3.4 Convert to CPM
 ```
 cpm_counts <- cpm(dge)
 ```
-
 ### 3.5 Keep genes with at least 1 CPM for all samples
 ```
 keep <- rowSums(cpm_counts >= 1) == 3
 dge <- dge[keep, , keep.lib.sizes=FALSE]
 ```
-
 ### 3.6 TMM normalisation, define columns for each group (updating sample names from metadata) and rename columns of counts
 ```
 dge <- calcNormFactors(dge, method="TMM")
