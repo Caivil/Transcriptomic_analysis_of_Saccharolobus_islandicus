@@ -5,9 +5,7 @@ The experimental design of the study focused on understanding the gene expressio
 - sample 2: 4 hours (in S phase)
 - sample 3: 6 hours( in G2 phase)
 ## 2.Obtaining the data
-The long reads were obtaiend from the NCBI database and gunzip *.fastq.gz was used to unzip the file. 
-The short reads were obtained with sratoolkit: ```module load sratoolkit.3.0.7``` then ```fasterq-dump SRR30916324 --split-files```.
-File names: ```SRR30916324_1.fastq```,```SRR30916324_2.fastq``` and ```SRR30916323.fastq```.
+The reads (Sequenced with Illumina NextSeq 2000) were obtaiend from the NCBI database and ```gunzip *.fastq.gz``` was used to unzip the file. 
 ## 3.Workflow
 This workflow exaplains the hybrid de novo assembly of *Pseudomonas aeruginosa* YK01 (script stored in workflow/ )
 ### 3.1 Quality check
